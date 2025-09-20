@@ -38,3 +38,5 @@ USER user
 ENTRYPOINT ["/bin/bash"]
 WORKDIR /opt/ndk
 
+COPY utils/build.sh /usr/local/bin/build
+COPY utils/init.sh /usr/local/bin/init
