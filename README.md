@@ -7,18 +7,17 @@ And you're done !
 
 ## How to run it ?
 
-Run `docker run -v "./apps:/opt/ndk/apps" -i -t android-1.6`, it will start a bash session.
+Run `docker run -v "[PATH TO YOUR PROJECT]:/opt/ndk/apps/[YOUR PROJECT NAME]" -i -t android-1.6`, it will start a bash session.
 
 Now you just have to:
-1. Drop your application in the `apps` folder
-2. Run `init [YOUR PROJECT NAME]` at least one
-3. And now you can build your project using `build [YOUR PROJECT NAME] [debug OR release]`,
+1. Run `init [YOUR PROJECT NAME]` at least one
+2. And now you can build your project using `build [YOUR PROJECT NAME] [debug OR release]`,
 
    and your APK should reside in a newly created `bin` folder!
 
 ## How can I integrate it in a script ?
 
-`docker run -v "./apps:/opt/ndk/apps" -i -t android-1.6 -c 'build [YOUR PROJECT NAME] [debug OR release]'`
+`docker run -v "[PATH TO YOUR PROJECT]:/opt/ndk/apps/[YOUR PROJECT NAME]" -i -t android-1.6 -c 'build [YOUR PROJECT NAME] [debug OR release]'`
 
 ### Download links
 
