@@ -31,3 +31,10 @@ ENV NDKROOT /opt/ndk
 RUN mv /opt/android-ndk-1.6_r1 $NDKROOT
 RUN cd /opt/ndk; bash build/host-setup.sh
 
+RUN useradd -ms /bin/bash user
+RUN chmod -R +555 /opt
+RUN chown -R user:user /opt
+USER user
+ENTRYPOINT ["/bin/bash"]
+WORKDIR /opt/ndk
+

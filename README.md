@@ -1,9 +1,15 @@
-## How to use it ?
+## How to install it ?
 
 1. Run `download.sh`
-2. Run `docker image build .`
+2. Run `docker build -t android-1.6 .`
 
 And you're done !
+
+## How to run it ?
+
+Run `docker run -v "./apps:/opt/ndk/apps" -i -t android-1.6`, it will start a bash session.
+
+Now you just have to drop your application in the `apps` folder and run `MAKE=[NAME OF YOUR APP]`.
 
 ### Download links
 
