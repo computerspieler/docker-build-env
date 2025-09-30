@@ -40,3 +40,11 @@ WORKDIR /opt/ndk
 
 COPY utils/build.sh /usr/local/bin/build
 COPY utils/init.sh /usr/local/bin/init
+
+RUN mkdir -p /home/user/.android
+RUN echo | keytool -genkey \
+  -v -keystore /home/user/.android/debug.keystore \
+  -alias 'androiddebugkey' \
+  -storepass 'android' \
+  -dname 'CN=Android Debug,O=Android,C=US'
+
