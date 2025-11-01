@@ -18,4 +18,4 @@ if [ -z "$build_xml_path" ]; then
     exit 1
 fi
 
-(cd /opt/ndk; make APP="$1") && (cd $(dirname "$build_xml_path"); ant "$2")
+(cd /opt/ndk; NDK_PROJECT_PATH="$APP_FOLDER" ./ndk-build) && (cd "$APP_FOLDER"; ant "$2")

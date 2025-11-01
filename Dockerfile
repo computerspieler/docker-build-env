@@ -3,7 +3,7 @@ FROM debian:bookworm-slim
 RUN dpkg --add-architecture i386
 RUN apt update
 RUN apt install -y lib32z1 make unzip bzip2 \
-  libncurses5:i386 libstdc++6:i386
+  libncurses5:i386 libstdc++6:i386 file
 
 COPY archives /archives
 
@@ -17,7 +17,7 @@ RUN mv /jdk1.6.0_45 $JAVA_HOME
 # Install Ant
 ENV ANT_HOME /opt/ant
 ENV PATH $PATH:$ANT_HOME/bin
-RUN tar xvf /archives/apache-ant-1.9.16-bin.tar.bz2 -C /opt
+RUN tar xjvf /archives/apache-ant-1.9.16-bin.tar.bz2 -C /opt
 RUN mv /opt/apache-ant-1.9.16 $ANT_HOME 
 
 # Install SDK
@@ -26,10 +26,10 @@ RUN mv /opt/android-sdk-linux_x86-1.6_r1 /opt/sdk
 ENV PATH $PATH:/opt/sdk/tools
 
 # Install NDK
-RUN unzip /archives/android-ndk-1.6_r1-linux-x86.zip -d /opt
+RUN tar xjvf /archives/android-ndk-r9d-linux-x86_64.tar.bz2 -C /opt
 ENV NDKROOT /opt/ndk
-RUN mv /opt/android-ndk-1.6_r1 $NDKROOT
-RUN cd /opt/ndk; bash build/host-setup.sh
+RUN mv /opt/android-ndk-r9d $NDKROOT
+RUN mkdir /opt/ndk/apps
 
 RUN useradd -ms /bin/bash user
 RUN chmod -R +555 /opt
